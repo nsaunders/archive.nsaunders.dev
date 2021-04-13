@@ -1,0 +1,1 @@
+!function(){"use strict";for(var a=(new Date).getHours(),b=a>=7&&a<19,c=document.getElementsByClassName("daylight"),d=0;d<c.length;d++)c[d].classList.add(b?"on":"off")}();
