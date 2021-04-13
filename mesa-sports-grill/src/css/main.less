@@ -1,0 +1,445 @@
+.gradient (@startColor: #eee, @endColor: white) {
+  background-color: @startColor;
+  background: -webkit-gradient(linear, left top, left bottom, from(@startColor), to(@endColor));
+  background: -webkit-linear-gradient(top, @startColor, @endColor);
+  background: -moz-linear-gradient(top, @startColor, @endColor);
+  background: -ms-linear-gradient(top, @startColor, @endColor);
+  background: -o-linear-gradient(top, @startColor, @endColor);
+}
+
+.grayscale () {
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
+  filter: gray;
+  -webkit-filter: grayscale(100%);
+}
+
+.ungrayscale () {
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'1 0 0 0 0, 0 1 0 0 0, 0 0 1 0 0, 0 0 0 1 0\'/></filter></svg>#grayscale");
+  -webkit-filter: grayscale(0%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Sans-Serif;
+}
+
+.page {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  overflow: auto;
+  background-color: #999;
+}
+
+.shell {
+  .gradient(#222, transparent);
+  padding: 1rem;
+  position: fixed;
+  overflow: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+header {
+  margin-bottom: 0.5rem;
+  text-align: center;
+  img {
+    width: 100%;
+  }
+}
+
+nav a, section {
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+nav a {
+  display: block;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: bolder;
+  background: #000;
+
+  &:link, &:visited {
+    color: #fff;
+    border: 1px solid #000;
+  }
+
+  &:hover {
+    color: #ff0;
+    border: 1px solid #ff0;
+  }
+
+  &:active {
+    color: #000;
+    background: #ff0;
+    cursor: default;
+    border: 1px solid #000;
+  }
+
+  &.active {
+    color: #999;
+    background: #000;
+    border: 1px solid #999;
+    cursor: default;
+  }
+}
+
+section {
+  color: #bbb;
+  background: #222;
+
+  &.minimal-content {
+    p:not(.title) {
+      text-align: justify;
+    }
+
+    text-align: center;
+  }
+
+  &.secondary {
+    @base-color: #600;
+
+    background: darken(@base-color, 3%);
+    color: lighten(@base-color, 55%);
+
+    h1 {
+      color: lighten(@base-color, 40%);
+    }
+
+    &.emphasis {
+      background: lighten(@base-color, 5%);
+      color: lighten(@base-color, 70%);
+
+      h1 {
+        color: lighten(@base-color, 55%);
+      }
+    }
+  }
+
+  &.primary h1 {
+    font-size: 2rem;
+  }
+
+  h1 {
+    color: #666;
+  }
+}
+
+p, .object-container {
+  margin: 1rem 0;
+}
+
+.photo {
+  border-radius: 1rem;
+}
+
+.map {
+  margin: 0 auto;
+  height: 400px;
+  width: 100%;
+}
+
+.map-address {
+  color: #000;
+  text-align: left;
+
+  .name, .details {
+    display: block;
+  }
+
+  .municipality:after {
+    content: ", ";
+  }
+
+  .postal-code:before {
+    content: "  ";
+  }
+
+  .phone-number {
+    display: block;
+  }
+
+  .name {
+    font-weight: bold;
+    color: #f00;
+  }
+}
+
+.photo {
+  max-width: 100%;
+}
+
+table {
+  margin: 0 auto;
+  min-width: 50%;
+
+  caption {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  caption, th {
+    color: #fff;
+  }
+
+  th, td {
+    text-align: left;
+  }
+
+  td, th, caption {
+    padding: 0.3rem;
+  }
+}
+
+h2, .category > .title {
+  font-size: 2rem;
+  color: #f66;
+}
+
+.category .note {
+  font-style: italic;
+}
+
+.item {
+  margin: 1rem 0;
+
+  > .title, > .description {
+    display: block;
+  }
+
+  > .price, .options, .addons {
+    color: #777;
+  }
+
+  > .title {
+    color: #fff;
+  }
+
+  .price:before {
+    content: "$"
+  }
+
+  .addons {
+    font-style: italic;
+  }
+}
+
+.copyright, .job-application {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #555;
+    
+  a:link, a:visited, a:active {
+    color: #555;
+  }
+    
+  a:hover {
+    color: #900;
+  }
+}
+
+.social-media {
+  text-align: center;
+  margin: 1rem;
+
+  a {
+    margin: 0.5rem;
+    color: transparent;
+  }
+
+  a:link, a:visited, a:active {
+    .grayscale();
+  }
+
+  a:link, a:visited {
+    opacity: 0.6;
+  }
+
+  a:active {
+    .grayscale();
+  }
+
+  a:active, a:hover {
+    opacity: 1.0;
+  }
+
+  a:hover {
+    .ungrayscale();
+  }
+
+  img {
+    height: 2.5rem;
+  }
+}
+
+.daylight {
+  &.when-on.off {
+    display: none;
+  }
+
+  &.when-off.on {
+    display: none;
+  }
+}
+
+@media(max-width: 639px) {
+  .item {
+    > .price, .options, .addons {
+      display: block;
+    }
+
+    .options li, .addons li {
+      display: block;
+    }
+
+    .addons .price:before {
+      content: "+$";
+    }
+  }
+}
+
+@media(min-width: 640px) {
+  .item {
+    > .price, .options, .addons {
+      display: inline-block;
+    }
+
+    .options li, .addons li {
+      display: inline;
+      margin-left: 1rem;
+    }
+
+    .options li:first-child {
+      margin: 0;
+    }
+
+    .addons .price:before {
+      content: "add $";
+    }
+  }
+}
+
+@media(min-width: 720px) {
+  footer {
+    display: table;
+    width: 98%;
+    margin: 1.5rem auto 0 auto;
+  }
+
+  .copyright, .job-application, .social-media {
+    display: table-cell;
+    vertical-align: middle;
+  }
+    
+  .social-media {
+    text-align: left;
+  }
+    
+  .job-application {
+    text-align: center;
+  }
+
+  .copyright {
+    text-align: right;
+  }
+}
+
+@media(max-width: 959px) {
+  table {
+    thead, tbody {
+      display: inline-block;
+    }
+
+    td, th, caption {
+      display: block;
+    }
+  }
+}
+
+@media(min-width: 960px) {
+  header img {
+    width: 50%;
+  }
+
+  .shell {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+
+  section.primary h1 {
+    font-size: 4rem;
+  }
+
+  .section-group, nav {
+    display: table;
+    width: 100%;
+  }
+
+  nav ul {
+    display: table-row;
+  }
+
+  .section-group-item-container, nav li {
+    display: table-cell;
+    padding: 0 0.25rem;
+
+    &:first-child {
+      padding-left: 0.5rem;
+    }
+
+    &:last-child {
+      padding-right: 0.5rem;
+    }
+  }
+
+  .section-group-item-container section, nav a {
+    margin: 0;
+  }
+
+  nav a {
+    text-align: center;
+  }
+
+  .photo {
+    max-width: 40%;
+  }
+
+  .map {
+    max-width: 50%;
+  }
+
+
+
+  .calendar {
+    caption {
+      background: #333;
+    }
+
+    th, td {
+      border: 1px solid #333;
+    }
+
+    th {
+      background: #666;
+    }
+
+    td {
+      background: #eee;
+      color: #333;
+      height: 100px;
+    }
+  }
+}
+
+.view:not(.active) {
+  display: none;
+}
