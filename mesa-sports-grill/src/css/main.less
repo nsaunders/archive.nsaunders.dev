@@ -23,7 +23,7 @@
 }
 
 body {
-  font-family: Sans-Serif;
+  font-family: sans-serif;
 }
 
 .page {
@@ -48,7 +48,10 @@ body {
 }
 
 header {
-  margin-bottom: 0.5rem;
+  margin: 1rem 0;
+  @media (min-width:640px) {
+    margin: 3rem 0;
+  }
   text-align: center;
   img {
     width: 100%;
@@ -61,6 +64,10 @@ nav a, section {
   margin: 0.5rem;
 }
 
+section {
+  padding: 3rem;
+}
+
 nav a {
   display: block;
   text-transform: uppercase;
@@ -69,7 +76,7 @@ nav a {
   background: #000;
 
   &:link, &:visited {
-    color: #fff;
+    color: #999;
     border: 1px solid #000;
   }
 
@@ -86,9 +93,9 @@ nav a {
   }
 
   &.active {
-    color: #999;
+    color: #fff;
     background: #000;
-    border: 1px solid #999;
+    border: 1px solid #fff;
     cursor: default;
   }
 }
@@ -328,11 +335,13 @@ h2, .category > .title {
   }
 }
 
-@media(min-width: 720px) {
+footer { margin-top: 2rem; margin-bottom: 1rem; }
+
+@media(min-width: 960px) {
   footer {
     display: table;
     width: 98%;
-    margin: 1.5rem auto 0 auto;
+    margin: 2rem auto 1rem auto;
   }
 
   .copyright, .job-application, .social-media {
@@ -386,6 +395,14 @@ h2, .category > .title {
 
   nav ul {
     display: table-row;
+  }
+
+  nav li {
+    width: 33%;
+  }
+
+  .section-group-item-container {
+    width: 14.286%;
   }
 
   .section-group-item-container, nav li {
@@ -442,4 +459,13 @@ h2, .category > .title {
 
 .view:not(.active) {
   display: none;
+}
+
+.secondary {
+  padding: 1.5rem;
+}
+
+.photo {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
